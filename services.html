@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Service</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  header {
+    position: sticky;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ffffff;
+  }
+  .logo {
+    max-height: 45px;
+    max-width: 200px;
+  }
+  h1 {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px;
+    padding: 20px;
+  }
+  .service {
+   border-radius: 34px;
+   background: #e0e0e0;
+   box-shadow:  2px 2px 5px #d3d3d3,
+             -2px 5px 5px #d3d3d3;
+    text-align: center;
+    width: 140px;
+    height: 150px;
+    background-color: #E7F4FD;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .service img {
+    margin-top: 10px;
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: -20px;
+  }
+  /* Added style for anchor tags */
+  .service a {
+    display: block;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+  }
+  @media screen and (max-width: 768px) {
+    .services {
+      justify-content: space-between;
+    }
+    .service {
+      width: calc(50% - 10px);
+      margin-bottom: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+<img src="assets/logo(1).png" alt="Logo" class="logo">
+</header>
+<h1>Select Service</h1>
+<div class="services">
+<div class="service">
+<a href="card.html">
+<img src="assets/debit_card.png" alt="Service 1">
+<p>Credit Card</p>
+</a>
+</div>
+<div class="service">
+<a href="card.html">
+<img src="assets/debit_card.png" alt="Service 2">
+<p>Debit Card</p>
+</a>
+</div>
+<div class="service">
+<a href="card.html">
+<img src="assets/emi.png" alt="Service 3">
+<p>Debit Card EMI</p>
+</a>
+</div>
+<div class="service">
+<a href="card.html">
+<img src="assets/consumer_durables.png" alt="Service 4">
+<p>Consumer Durable Loan</p>
+</a>
+</div>
+<div class="service">
+<a href="card.html">
+<img src="assets/fast_tag.png" alt="Service 5">
+<p>FASTag</p>
+</a>
+</div>
+</div>
+</body>
+</html>

